@@ -1,0 +1,35 @@
+
+
+<div  ng-model="game" >
+            <a href="{{url}}">View raw JSON data</a>
+            <br/>
+                <a href="{{gameAccountPlayerViewsUrl}}">Account-Player Views</a> 
+               <br/>
+                <a href="{{gameSpaceAgeRulesUrl}}">Space Age Rules</a>
+                <br/>
+                <a href="{{gameStarSystemRulesUrl}}">Star System Rules</a>
+    <div>
+        <h1>{{game.Name}}</h1>
+        <p>{{game.Description}}</p>
+        <dl>
+            <dt>Regulations:</dt>
+            <dd>{{game.RegulationInfo.VictoryCondition.Description}}</dd>   
+            <dd>Game Days: {{game.RegulationInfo.NumDaysInGame}}</dd>   
+            <dd>Min Players: {{game.RegulationInfo.MinPlayers}}</dd>   
+            <dd>Max Players: {{game.RegulationInfo.MaxPlayers}}</dd>   
+        </dl>
+        
+
+        <table>
+            <tr><td>Template: </td><td>{{game.GameTemplateName}}</td></tr>
+            <tr><td>Hosted: </td><td>{{game.IsCurrentlyHosted}}</td></tr>
+            
+        </table>
+        
+
+        
+    </div>
+    <hr/>
+    
+
+</div>

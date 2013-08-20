@@ -1,0 +1,16 @@
+<div class="span10" ng-model="template" >
+    <div class="thumbnail" >
+        <h1>Game: {{template.name}}</h1>
+        <table>
+            <tr ng-repeat="(key,value) in template">
+                <td>{{key}}</td>
+                <td>{{value}}</td>
+            </tr>
+        </table>
+    </div>
+    <hr/>
+    <a href="{{templateTypeSectionsUrl}}">Type Sections (a.k.a. TypeDatabase)</a>
+</div>
+
+
+

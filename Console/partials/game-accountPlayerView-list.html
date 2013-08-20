@@ -1,0 +1,38 @@
+<div class="span10">
+
+    <h1>Players</h1>
+    <a href="{{url}}">View raw JSON data</a>
+    <div ng-repeat="accountPlayerView in accountPlayerViews" ng-click='goto(accountPlayerView.PlayerView.PlayerID)' class="thumbnail" style="cursor: pointer" >
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span6">
+                    <h2>User {{accountPlayerView.AccountView.FullName}}</h2>
+                    <dl>
+                        <dt>Experience:</dt>
+                        <dd>{{accountPlayerView.AccountView.Experience}}</dd>
+                        <dt>CompletedGameCount</dt>
+                        <dd>{{accountPlayerView.AccountView.CompletedGameCount}}</dd>
+                        <dt>ProfilePictureUrlSmall</dt>
+                        <dd>{{accountPlayerView.AccountView.ProfilePictureUrlSmall}}</dd>
+                        <dt>ProfilePictureUrlLarge</dt>
+                        <dd>{{accountPlayerView.AccountView.ProfilePictureUrlLarge}}</dd>
+                    </dl>
+                </div>
+                <div class="span6">
+                    <h2>Character: {{accountPlayerView.PlayerView.CharacterName}}</h2>
+                    <dl>
+                        <dt>Experience:</dt>
+                        <dd>{{accountPlayerView.PlayerView.Experience}}</dd>
+                        <dt>Reputation</dt>
+                        <dd>{{accountPlayerView.PlayerView.Reputation}}</dd>
+                        <dt>Portrait ID</dt>
+                        <dd>{{accountPlayerView.PlayerView.PortraitID}}</dd>
+                        <dt>Color</dt>
+                        <dd>{{accountPlayerView.PlayerView.ColorIndex}}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

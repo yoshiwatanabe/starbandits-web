@@ -1,0 +1,12 @@
+<div class="container-fluid" >
+    <div class="row-fluid">
+        <div class="span12">
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div ng-repeat="listing in listings" ng-click='goto(listing.id)' class="thumbnail" style="cursor: pointer" >
+            <h1>{{listing.name}}</h1>
+            <p>{{listing.description}}</p>
+        </div>
+    </div>
+</div>

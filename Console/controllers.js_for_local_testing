@@ -1,0 +1,193 @@
+'use strict';
+
+/* Controllers */
+
+function GetApplicationUrl() {
+   // 'http://192.168.1.155/app'
+   // 'https://www.starbandits.com/app'
+   //return 'https://www.starbandits.com/app';
+   return 'http://localhost:4444/';
+}
+
+function GetApiUrl() {
+   //return GetApplicationUrl() + '/Api';
+   return 'http://localhost/app/Api';
+}
+
+function TopNavigationCtrl($scope) {
+    //$scope.allGamesUrl = GetApplicationUrl() + '/Dashboard/index.html#/listings';
+    //$scope.testPlayersUrl = GetApplicationUrl() + '/Dashboard/index.html#/testPlayers';
+    
+    $scope.allGamesUrl = GetApplicationUrl() + '/index.html#/listings';
+    $scope.testPlayersUrl = GetApplicationUrl() + '/index.html#/testPlayers';
+}
+
+function MyPlayerListCtrl($scope, $http) {
+
+    $scope.url = GetApiUrl() + '/LoggedOnAccount/PlayerDatas';
+    $http.get($scope.url).success(function(data) {
+        $scope.myPlayers = data;
+    });
+
+    $scope.goto = function(playerId) {
+        var url = 'index.html#/myPlayers/' + playerId;
+        window.location.href = url;
+        return false;
+    };
+}
+
+function MyPlayerDetailCtrl($scope, $http, $routeParams) {
+
+    $scope.url = GetApiUrl() + '/LoggedOnAccount/PlayerDatas/' + $routeParams.playerId;
+    $http.get($scope.url).success(function(data) {
+        $scope.myPlayer = data;
+    });
+}
+
+function TestPlayerListCtrl($scope, $http) {
+
+    $scope.url = GetApiUrl() + '/TestAccount/PlayerDatas';
+    $http.get($scope.url).success(function(data) {
+        $scope.myPlayers = data;
+    });
+
+    $scope.goto = function(playerId) {
+        var url = 'index.html#/myPlayers/' + playerId;
+        window.location.href = url;
+        return false;
+    };
+}
+
+function TestPlayerDetailCtrl($scope, $http, $routeParams) {
+
+    $scope.url = GetApiUrl() + '/TestAccount/PlayerDatas/' + $routeParams.playerId;
+    $http.get($scope.url).success(function(data) {
+        $scope.myPlayer = data;
+    });
+}
+
+function DirectoryCtrl($scope, $http) {
+
+    $scope.listings = [
+        {id: "games",
+            name: "Games",
+            description: "View a list of games that are hosted on our central server. Players can join and play one or more games."
+        },
+        {id: 'templates',
+            name: "Templates",
+            description: "Learn more details about a template. Each game is created from a template that defines a different set of rules."}
+        
+    ];
+
+    $scope.goto = function(listingId) {
+        var url = 'index.html#/' + listingId;
+        window.location.href = url;
+        return false;
+    };
+}
+
+function TemplateListCtrl($scope, $http) {
+    $http.get(GetApiUrl() + '/Templates').success(function(data) {
+        $scope.templates = data;
+    });
+
+    $scope.goto = function(templateName) {
+        var url = 'index.html#/templates/' + templateName;
+        window.location.href = url;
+        return false;
+    };
+}
+
+function TemplateDetailCtrl($scope, $http, $routeParams) {
+    $scope.templateName = $routeParams.templateName;
+    var url = GetApiUrl() + '/Templates/' + $routeParams.templateName;
+    $http.get(url).success(function(data) {
+        $scope.template = data;
+    });
+    
+    $scope.templateTypeSectionsUrl = 'index.html#/templates/' + $routeParams.templateName + '/typesections';
+}
+
+function TemplateTypeSectionListCtrl($scope, $http, $routeParams) {
+    $scope.templateName = $routeParams.templateName;
+    var url = GetApiUrl() + '/Templates/' + $routeParams.templateName + '/TypeSections';
+    $http.get(url).success(function(data) {
+        $scope.typesections = data;
+    });
+    
+    $scope.goto = function(templateName, typesectionname) {
+        var url = 'index.html#/templates/' + templateName + '/typesections/' + typesectionname;
+        window.location.href = url;
+        return false;
+    };
+}
+
+function HandleCtrl($scope, $http, $routeParams){
+     $scope.templateUrl = 'partials/template-typesection-' + $routeParams.typesectionname + '-detail.html'; 
+     
+     var url = GetApiUrl() + '/Templates/' + $routeParams.templateName + '/TypeSections/' + $routeParams.typesectionname;
+    $http.get(url).success(function(data) {
+        $scope.typesection = data;
+    });  
+}
+
+function GameListCtrl($scope, $http) {
+    $scope.url = GetApiUrl() + '/Games?includeRegulation=true';
+    $http.get($scope.url).success(function(data) {
+        $scope.games = data;
+    });
+
+    $scope.goto = function(gameId) {
+        var url = 'index.html#/games/' + gameId;
+        window.location.href = url;
+        return false;
+    };
+}
+
+function GameDetailCtrl($scope, $http, $routeParams) {
+    $scope.gameId = $routeParams.gameId;
+    $scope.url = GetApiUrl() + '/Games/' + $routeParams.gameId;
+    $http.get($scope.url).success(function(data) {
+        $scope.game = data;
+    });
+    
+    $scope.gameAccountPlayerViewsUrl = 'index.html#/games/' + $routeParams.gameId + '/accountPlayerViews';
+    $scope.gameSpaceAgeRulesUrl = 'index.html#/games/' + $routeParams.gameId + '/spaceagerules';
+    $scope.gameStarSystemRulesUrl = 'index.html#/games/' + $routeParams.gameId + '/starsystemrules';
+}
+
+
+function GameAccountPlayerViewListCtrl($scope, $http, $routeParams) {
+    $scope.url = GetApiUrl() + '/Games/' + $routeParams.gameId + "/AccountPlayerViews";
+    $http.get($scope.url).success(function(data) {
+        $scope.accountPlayerViews = data;
+    });
+
+    $scope.goto = function(playerId) {
+        var url = 'index.html#/games/' + $routeParams.gameId + '/accountPlayerViews/' + playerId;
+        window.location.href = url;
+        return false;
+    };
+}
+
+function GameSpaceAgeRuleListCtrl($scope, $http, $routeParams) {
+    $scope.url = GetApiUrl() + '/Games/' + $routeParams.gameId + '/SpaceAgeRules';
+    $http.get($scope.url).success(function(data) {
+        $scope.spaceAgeRules = data;
+    });
+}
+
+function GameStarSystemRuleListCtrl($scope, $http, $routeParams) {
+    $scope.url = GetApiUrl() + '/Games/' + $routeParams.gameId + '/StarSystemRules';
+    $http.get($scope.url).success(function(data) {
+        $scope.starSystemRules = data;
+    });
+}
+
+function GameAccountPlayerViewDetailCtrl($scope, $http, $routeParams) {
+
+    $scope.url = GetApiUrl() + '/Games/' + $routeParams.gameId + "/AccountPlayerViews/" + $routeParams.playerId;
+    $http.get($scope.url).success(function(data) {
+        $scope.accountPlayerView = data;
+    });
+}

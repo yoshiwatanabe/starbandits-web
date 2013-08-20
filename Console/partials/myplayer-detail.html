@@ -1,0 +1,22 @@
+<div class="span10" ng-model="myPlayer" >
+	<a href="{{url}}">View raw JSON data</a>
+	<hr/>
+	    <a href="{{milestoneStatusesUrl}}">Milestone Statuses</a>
+        <br/>
+        <a href="{{garrisonSnapshotsUrl}}">Garrison Snapshots</a>
+        <br/>
+        <a href="{{achievementsUrl}}">Achievements</a>
+        <br/>
+        <a href="{{shipsUrl}}">Ships</a>
+    <div class="thumbnail" >
+        <h1>Player {{myPlayer.CharacterName}}</h1>
+        <table>
+            <tr ng-repeat="(key,value) in myPlayer">
+                <td>{{key}}</td>
+                <td>{{value}}</td>
+            </tr>
+        </table>
+    </div>
+    <hr/>
+
+</div>

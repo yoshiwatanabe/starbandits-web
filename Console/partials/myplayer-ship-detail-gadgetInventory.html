@@ -1,0 +1,15 @@
+<div class="span10" ng-model="shipGadgetInventory" >
+	<a href="{{url}}">View raw JSON data</a>
+
+    <div class="thumbnail" >
+        <h1>Ship Gadget Inventory</h1>
+        <table>
+            <tr ng-repeat="(key,value) in shipGadgetInventory">
+                <td>{{key}}</td>
+                <td>{{value}}</td>
+            </tr>
+        </table>
+    </div>
+    <hr/>
+
+</div>

@@ -1,0 +1,26 @@
+
+<div class="span10">
+
+    <h1>My Player - Milestone Statuses</h1>
+    <a href="{{url}}">View raw JSON data</a>
+    <div ng-repeat="milestoneStatus in myPlayerMilestoneStatuses" ng-click='goto(milestoneStatus.MilestoneTypeID)' class="thumbnail" style="cursor: pointer" >
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span6">
+                    <h2>Milestone Name: {{milestoneStatus.MilestoneName}}</h2>
+
+                    <table>
+                        <tr ng-repeat="(key,value) in milestoneStatus">
+                            <td>{{key}}</td>
+                            <td>{{value}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="span6">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

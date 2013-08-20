@@ -1,0 +1,13 @@
+<div>
+    <h1>Templates</h1>
+    <p>Test</p>
+    <div ng-repeat="template in templates" ng-click='goto(template.Name)' style="cursor: pointer" >
+        <h2>Game: {{template.Name}}</h2>
+<!--        <table>
+            <tr ng-repeat="(key,value) in template">
+                <td>{{key}}</td>
+                <td>{{value}}</td>
+            </tr>
+        </table>-->
+    </div>
+</div>

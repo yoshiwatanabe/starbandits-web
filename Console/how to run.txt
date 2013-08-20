@@ -1,0 +1,38 @@
+[Step 1]
+Download a latest version of NGINX from http://nginx.org/
+(See a download link on the right-side menu)
+
+[Step 2]
+Unzip NGINX folder to an arbitrary location on your machine
+
+[Step 3]
+Open /conf/nginx.conf in NGINX folder that you just unzipped
+
+Search for "server" section, then modify two things indicated in the following example
+
+
+---------- Example -------
+
+    server {
+        listen       4444; <<<<<<<<<<<< Change this from 80 to something like 4444
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   C:\\Imhotep\\StarCommerce\\GitSource\\Console\\small;  <<<<<<<< change this to point to the 'small' folder that is a child folder of this "how to run.txt" file
+            index  index.html index.htm;
+        }
+
+--------- End Example ---------
+
+[Step 4]
+Open a CMD console, CD to where NGINX.EXE is located in the NGINX folder. Then run NGINX
+C:> nginx.exe <Enter>
+
+[Step 5]
+In your browser, go to "localhost:4444"
+Done
+
