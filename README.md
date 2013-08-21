@@ -25,3 +25,5 @@ B. "Adhoc instance" runs on an arbitrary web server for development purpose. You
    information", an arbitrary "bot" is chosen and his game stats are displayed (yes, he is in huge disadvantage! every
    one knows where he is and what he can do!)
    
+
+(More information will be added later)
